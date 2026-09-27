@@ -1,0 +1,140 @@
+<!doctype html>
+<!--
+  NEW GAME PAGE TEMPLATE. Easiest: node tools/new-game.mjs (see README.md),
+  which copies this to site/<slug>/index.html and fills in the basics.
+  Then replace every remaining {{PLACEHOLDER}}, delete sections you don't need,
+  and run: node tools/check-site.mjs
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
+<title>{{GAME_NAME}} · {{SHORT_PITCH}} · Biosic Studios</title>
+<meta name="description" content="{{ONE_OR_TWO_SENTENCES_FOR_GOOGLE}}">
+<link rel="canonical" href="https://biosicstudios.com/{{SLUG}}/">
+<meta name="theme-color" content="#0e1116">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Biosic Studios">
+<meta property="og:title" content="{{GAME_NAME}}">
+<meta property="og:description" content="{{SHARE_CARD_TEXT}}">
+<meta property="og:image" content="https://biosicstudios.com/{{SLUG}}/img/{{COVER_FILE}}">
+<meta property="og:url" content="https://biosicstudios.com/{{SLUG}}/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@biosicstudios">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Pixelify+Sans:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+<script type="speculationrules">{"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"{{GAME_NAME}}","url":"https://biosicstudios.com/{{SLUG}}/","image":"https://biosicstudios.com/{{SLUG}}/img/{{COVER_FILE}}","description":"{{SHARE_CARD_TEXT}}","gamePlatform":["{{PLATFORM}}"],"author":{"@type":"Organization","name":"Biosic Studios","url":"https://biosicstudios.com/"}}</script>
+</head>
+<!-- Accent color for this game's buttons: var(--ember), var(--sun), var(--leaf), var(--water) or var(--sky-hi). -->
+<body style="--accent: {{ACCENT}}">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Biosic Studios home"><img src="/assets/brand/astronaut.webp" alt="" width="194" height="252">BIOSIC <span>STUDIOS</span></a>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        <li><a href="/#games">Games</a></li>
+        <li><a href="/hungerhold/">Hungerhold</a></li>
+        <li><a href="/levitating-larry/"><span class="hide-sm">Levitating </span>Larry</a></li>
+        <li><a class="nav-cta" href="/contact/"><span class="hide-sm">Work with us</span><span class="show-sm">Contact</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO: name, pitch, main buttons, cover art -->
+  <section class="hero">
+    <div class="wrap split">
+      <div class="stack-lg">
+        <div class="stack">
+          <span class="eyebrow">{{EYEBROW e.g. "Coming 2027" or "A Biosic Studios game"}}</span>
+          <h1>{{GAME_NAME_IN_CAPS}}</h1>
+          <p class="lede">{{ONE_LINE_HOOK}}</p>
+        </div>
+        <div class="btns">
+          <a class="btn accent" href="{{MAIN_LINK e.g. store page or /slug/play/}}">{{MAIN_BUTTON e.g. Play now / Wishlist}}</a>
+          <a class="btn ghost" href="#about">What is it?</a>
+        </div>
+      </div>
+      <div class="frame shot pixel">
+        <span class="fallback" aria-hidden="true">{{GAME_NAME_IN_CAPS}}</span>
+        <img src="/{{SLUG}}/img/{{COVER_FILE}}" decoding="async" alt="{{DESCRIBE_THE_IMAGE}}">
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT: three selling points -->
+  <section class="band" id="about" aria-labelledby="about-h">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <h2 id="about-h">{{SECTION_TITLE}}</h2>
+        <p>{{SHORT_PARAGRAPH}}</p>
+      </div>
+      <div class="grid3">
+        <div class="card"><h3>{{POINT_1}}</h3><p class="muted">{{POINT_1_TEXT}}</p></div>
+        <div class="card"><h3>{{POINT_2}}</h3><p class="muted">{{POINT_2_TEXT}}</p></div>
+        <div class="card"><h3>{{POINT_3}}</h3><p class="muted">{{POINT_3_TEXT}}</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTIONAL TRAILER: click-to-play YouTube. Replace VIDEO_ID (the part after watch?v=). -->
+  <section id="trailer" aria-labelledby="trailer-h">
+    <div class="wrap stack-lg">
+      <h2 id="trailer-h">TRAILER</h2>
+      <a class="video shot" href="https://www.youtube.com/watch?v={{VIDEO_ID}}" data-yt="{{VIDEO_ID}}" aria-label="Play the {{GAME_NAME}} trailer" rel="noopener">
+        <span class="fallback" aria-hidden="true">{{GAME_NAME_IN_CAPS}}</span>
+        <img src="https://i.ytimg.com/vi/{{VIDEO_ID}}/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="{{GAME_NAME}} trailer thumbnail">
+        <span class="play" aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="about stack">
+      <a class="brand" href="/"><img src="/assets/brand/astronaut.webp" alt="" width="194" height="252">BIOSIC <span>STUDIOS</span></a>
+      <p>Game development. App design. Endless fun.</p>
+      <div class="copy-row"><a href="mailto:partners@biosicstudios.com">partners@biosicstudios.com</a><button class="copy needs-js" type="button" data-copy="partners@biosicstudios.com">Copy</button></div>
+    </div>
+    <div>
+      <h2>Games</h2>
+      <ul>
+        <li><a href="/hungerhold/">Hungerhold</a></li>
+        <li><a href="/levitating-larry/">Levitating Larry</a></li>
+        <li><a href="https://biosicstudios.itch.io/420-tycoon" rel="noopener">420 Tycoon</a></li>
+        <li><a href="https://biosicstudios.itch.io/420-clicks-later" rel="noopener">420 Clicks Later</a></li>
+        <!-- footer:games:end -->
+      </ul>
+    </div>
+    <div>
+      <h2>Studio</h2>
+      <ul>
+        <li><a href="/contact/">Work with us</a></li>
+        <li><a href="/press/">Press kit</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Follow</h2>
+      <ul>
+        <li><a href="https://biosicstudios.itch.io/" rel="noopener">itch.io</a></li>
+        <li><a href="https://www.youtube.com/channel/UCl_Kg3ampLr_eGNiyWTA5pA" rel="noopener">YouTube</a></li>
+        <li><a href="https://twitter.com/biosicstudios" rel="noopener">X / Twitter</a></li>
+      </ul>
+    </div>
+    <p class="legal">© 2026 Biosic Studios</p>
+  </div>
+</footer>
+</body>
+</html>

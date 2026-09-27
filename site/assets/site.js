@@ -17,6 +17,25 @@ document.querySelectorAll('a.video[data-yt]').forEach((link) => {
   });
 });
 
+// ---------- Click-to-play self-hosted video ----------
+// Same idea for our own MP4s: nothing downloads until someone presses play.
+// Without JS the link simply opens the MP4, which every browser can play.
+document.querySelectorAll('a.video[data-mp4]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    const video = document.createElement('video');
+    video.src = link.dataset.mp4;
+    video.poster = link.querySelector('img')?.currentSrc || '';
+    video.controls = true;
+    video.playsInline = true;
+    video.setAttribute('aria-label', link.getAttribute('aria-label') || 'Video');
+    link.replaceChildren(video);
+    link.removeAttribute('href');
+    video.play().catch(() => {});
+    video.focus();
+  }, { once: true });
+});
+
 // ---------- Image fallbacks ----------
 // If a cover image fails to load, hide it so the styled title panel behind it shows.
 document.querySelectorAll('.frame > img, .video > img').forEach((img) => {

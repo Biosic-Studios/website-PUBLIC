@@ -38,6 +38,8 @@ This creates `site/<slug>/index.html` and adds the game to the home slider, the 
 - **Colors:** space black (`#0E1116`) with logo blue (`#0084C4` / `#3FA9E6`) for the studio.
 - **Game accents:** each page sets `--accent` (Hungerhold `var(--ember)`, Levitating Larry `theme-sun`), and links, buttons and highlights follow it.
 - **Fonts:** Pixelify Sans for headings and buttons, Atkinson Hyperlegible Next for everything else.
+- **Levitating Larry:** `site/levitating-larry/img/larry.png` is a tiny 22×29 sprite. Show it with the `.sprite` class (inside a `.frame.space-frame.warm`) so it scales up pixel-sharp.
+- **Studio trailer:** `site/assets/video/` (MP4 + poster). It plays on the home page (`#trailer`, click to load) and is downloadable from the press kit.
 
 ## Contact
 

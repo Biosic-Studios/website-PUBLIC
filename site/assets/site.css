@@ -355,6 +355,11 @@ html:not(.js) .needs-js { display: none !important; }
     var(--panel-2);
 }
 .frame > img.is-broken, .video > img.is-broken { display: none; }
+/* .fit: show the whole picture (no cropping) on a backdrop that matches the
+   art's own edge color, for covers that aren't 16:9. Set --fit-bg per frame. */
+.frame.fit { background: var(--fit-bg, var(--panel-2)); }
+.frame.fit > img { object-fit: contain; }
+.frame.fit:has(> img:not(.is-broken)) > .fallback { display: none; }
 .video .fallback { place-items: end center; padding-bottom: 12%; }
 
 /* ---------- Cards ---------- */

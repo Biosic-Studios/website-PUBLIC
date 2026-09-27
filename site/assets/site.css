@@ -3,6 +3,19 @@
    --accent (Hungerhold ember, Larry sun, …). Pixel display font for headings
    and buttons, a high-legibility sans for everything you read. */
 
+/* Self-hosted fonts (SIL Open Font License, see /assets/fonts/OFL-*.txt).
+   Variable fonts: one file covers every weight. */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("/assets/fonts/atkinson-hyperlegible-next-latin.woff2") format("woff2");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url("/assets/fonts/pixelify-sans-latin.woff2") format("woff2");
+  font-weight: 400 700; font-style: normal; font-display: swap;
+}
+
 :root {
   color-scheme: dark;
 
@@ -42,7 +55,7 @@
   /* Layout */
   --maxw: 1120px;
   --gutter: clamp(16px, 4vw, 32px);
-  --radius: 6px;
+  --radius: 10px;
   --header-h: 64px;
 }
 
@@ -95,6 +108,7 @@ section { padding-block: clamp(48px, 7vw, 88px); }
   letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
 }
 .eyebrow.sky { color: var(--sky-hi); }
+.eyebrow::before { content: "✦"; content: "✦" / ""; margin-right: 0.55em; font-size: 0.9em; }
 .lede { font-size: clamp(1.1rem, 0.6vw + 1rem, 1.3rem); color: var(--dust); line-height: 1.55; }
 .muted { color: var(--dust); }
 .small { font-size: 0.9rem; }
@@ -164,7 +178,7 @@ html:not(.js) .needs-js { display: none !important; }
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 48px; padding: 0 20px;
   font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.05em;
-  text-transform: uppercase; text-decoration: none; border-radius: 4px; border: 0; cursor: pointer;
+  text-transform: uppercase; text-decoration: none; border-radius: 8px; border: 0; cursor: pointer;
   transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease, background-color 120ms ease;
 }
 /* primary = the page accent (logo blue on studio pages, the game's color on game pages) */
@@ -172,7 +186,7 @@ html:not(.js) .needs-js { display: none !important; }
 .btn.primary:hover, .btn.accent:hover { color: var(--on-accent); filter: brightness(1.07); }
 .btn.primary:active, .btn.accent:active { transform: translateY(3px); box-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 45%, #000); }
 .btn.ghost { color: var(--bone); background: transparent; box-shadow: inset 0 0 0 2px var(--line-strong); }
-.btn.ghost:hover { color: var(--bone); box-shadow: inset 0 0 0 2px var(--accent); }
+.btn.ghost:hover { color: var(--bone); box-shadow: inset 0 0 0 2px var(--accent); transform: translateY(-1px); }
 .btn.sun { background: var(--sun); color: #1c1605; box-shadow: 0 4px 0 #8f7415; }
 .btn.sun:hover { color: #1c1605; filter: brightness(1.05); }
 .btn.sun:active { transform: translateY(3px); box-shadow: 0 1px 0 #8f7415; }
@@ -210,7 +224,7 @@ html:not(.js) .needs-js { display: none !important; }
 .showcase { position: relative; }
 .showcase-track {
   position: relative; display: flex; overflow-x: auto; overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory; border-radius: 12px; border: 1px solid var(--line);
+  scroll-snap-type: x mandatory; border-radius: 18px; border: 1px solid var(--line);
   background: var(--panel);
 }
 .js .showcase-track { scrollbar-width: none; }
@@ -256,6 +270,8 @@ html:not(.js) .needs-js { display: none !important; }
 }
 .sc-tab:hover { color: var(--bone); border-color: var(--line-strong); }
 .sc-tab[aria-current="true"] { color: var(--bone); border-color: var(--line-strong); background: var(--panel-2); }
+.sc-tab .label::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--tab-accent, var(--accent)); vertical-align: 1px; opacity: 0.55; }
+.sc-tab[aria-current="true"] .label::before { opacity: 1; box-shadow: 0 0 0 3px color-mix(in srgb, var(--tab-accent, var(--accent)) 30%, transparent); }
 .sc-tab .bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--tab-accent, var(--accent)); transform-origin: left; transform: scaleX(0); }
 .sc-tab[aria-current="true"] .bar { transform: scaleX(1); }
 .showcase.is-playing .sc-tab[aria-current="true"] .bar { animation: sc-progress var(--sc-interval, 7s) linear both; }
@@ -270,11 +286,14 @@ html:not(.js) .needs-js { display: none !important; }
 .sc-pause[aria-pressed="true"] .i-play { display: block; }
 .sc-pause[aria-pressed="true"] .i-pause { display: none; }
 @media (max-width: 640px) {
-  .sc-tab { flex: 0 0 12px; min-width: 0; height: 12px; padding: 0; border-radius: 999px; }
+  /* Dots on phones: small to look at, 24px+ to tap */
+  .sc-tab { flex: 0 0 24px; min-width: 0; height: 32px; padding: 0; border: 0; background: none; border-radius: 999px; }
+  .sc-tab::after { content: ""; position: absolute; inset: 11px 7px; border-radius: 999px; background: var(--line-strong); transition: background-color 160ms ease; }
   .sc-tab .label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .sc-tab[aria-current="true"] { flex-basis: 34px; background: var(--tab-accent, var(--accent)); }
+  .sc-tab[aria-current="true"] { flex-basis: 40px; background: none; }
+  .sc-tab[aria-current="true"]::after { background: var(--tab-accent, var(--accent)); }
   .sc-tab .bar { display: none; }
-  .sc-tabs { justify-content: center; align-items: center; }
+  .sc-tabs { justify-content: center; align-items: center; gap: 2px; }
 }
 
 /* ---------- Filter chips ---------- */
@@ -370,9 +389,11 @@ html:not(.js) .needs-js { display: none !important; }
 .game-card {
   background: var(--panel); border: 1px solid var(--line); border-radius: calc(var(--radius) + 2px);
   overflow: hidden; display: grid; grid-template-rows: auto 1fr;
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  transition: transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1), border-color 160ms ease, box-shadow 160ms ease;
 }
-.game-card:hover { transform: translateY(-3px); border-color: var(--line-strong); box-shadow: 0 16px 32px -20px rgb(0 0 0 / 0.8); }
+.game-card:hover { transform: translateY(-5px); border-color: var(--line-strong); box-shadow: 0 18px 34px -20px rgb(0 0 0 / 0.85); }
+.game-card .frame > img { transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+.game-card:hover .frame > img { transform: scale(1.04); }
 .game-card .frame { border-radius: 0; border-bottom: 1px solid var(--line); }
 .game-card .body { padding: 20px 22px 22px; display: grid; gap: 10px; align-content: start; }
 .game-card .links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 4px; font-weight: 700; }
@@ -455,6 +476,37 @@ html:not(.js) .needs-js { display: none !important; }
 .swatch { display: grid; grid-template-columns: 44px auto; gap: 4px 12px; align-items: center; padding: 10px 14px 10px 10px; border-radius: 8px; background: var(--panel); border: 1px solid var(--line); }
 .swatch i { grid-row: span 2; width: 44px; height: 44px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.15); }
 .swatch code { font-size: 0.9rem; color: var(--dust); }
+
+/* ---------- Charm ---------- */
+@keyframes twinkle { from { opacity: 0.3; } to { opacity: 0.8; } }
+@keyframes bob { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-3px) rotate(4deg); } }
+@keyframes wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-14deg) translateY(-2px); } 60% { transform: rotate(10deg); } }
+@keyframes drift { 0% { transform: translate(0, 0) rotate(-8deg); } 50% { transform: translate(-18px, -22px) rotate(10deg); } 100% { transform: translate(0, 0) rotate(-8deg); } }
+@keyframes beam-up { to { transform: translateY(-60px) scale(0.6); opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero::after, .frame.space-frame::before { animation: twinkle 3.8s ease-in-out infinite alternate; }
+  .brand img { animation: bob 4.5s ease-in-out infinite; transform-origin: 50% 60%; }
+  .brand:hover img { animation: wiggle 0.7s ease-in-out; }
+  .drift { animation: drift 9s ease-in-out infinite; }
+}
+.lost-astro { width: min(70%, 260px); margin-inline: auto; filter: drop-shadow(0 20px 30px rgb(0 132 196 / 0.25)); }
+
+/* Back to top: a little astronaut that beams you up (added by site.js) */
+.to-top {
+  position: fixed; right: 18px; bottom: 18px; z-index: 40; width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer; border: 1px solid var(--line-strong);
+  background: radial-gradient(circle at 50% 40%, rgb(0 132 196 / 0.35), var(--panel) 70%);
+  box-shadow: 0 10px 24px -10px rgb(0 0 0 / 0.8);
+  opacity: 0; transform: translateY(12px); pointer-events: none;
+  transition: opacity 200ms ease, transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.to-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { border-color: var(--sky-hi); }
+.to-top img { width: auto; height: 34px; }
+@media (prefers-reduced-motion: no-preference) {
+  .to-top img { animation: bob 4.5s ease-in-out infinite; }
+  .to-top.is-beaming img { animation: beam-up 420ms ease-in forwards; }
+}
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding-block: 36px 44px; color: var(--dust); font-size: 0.95rem; }

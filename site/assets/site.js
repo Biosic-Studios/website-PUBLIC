@@ -199,3 +199,27 @@ document.querySelectorAll('form[data-composer]').forEach((form) => {
   if (wanted && [...topic.options].some((o) => o.value === wanted)) topic.value = wanted;
   update();
 });
+
+// ---------- Back to top ----------
+// A little astronaut appears once you've scrolled a bit, and beams you back up.
+{
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'to-top';
+  button.setAttribute('aria-label', 'Back to top');
+  button.innerHTML = '<img src="/assets/brand/astronaut-80.webp" alt="" width="62" height="80">';
+  document.body.append(button);
+  const toggle = () => {
+    const show = scrollY > 700;
+    button.classList.toggle('is-visible', show);
+    button.tabIndex = show ? 0 : -1;
+    button.toggleAttribute('aria-hidden', !show);
+  };
+  addEventListener('scroll', toggle, { passive: true });
+  toggle();
+  button.addEventListener('click', () => {
+    button.classList.add('is-beaming');
+    scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+    setTimeout(() => button.classList.remove('is-beaming'), 600);
+  });
+}

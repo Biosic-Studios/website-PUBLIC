@@ -66,7 +66,7 @@ for (const page of pages) {
   }
 
   // Internal links, assets and anchors
-  for (const m of src.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
+  for (const m of src.matchAll(/\s(?:href|src|poster|data-mp4)="([^"]+)"/g)) {
     const ref = m[1];
     if (/^(https?:|mailto:|tel:|data:|javascript:)/.test(ref)) continue;
     const target = resolveTarget(page, ref);

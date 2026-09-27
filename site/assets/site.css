@@ -259,6 +259,12 @@ html:not(.js) .needs-js { display: none !important; }
     radial-gradient(1px 1px at 8% 84%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 44% 88%, #cfe8f7 50%, transparent 51%);
 }
 .frame.space-frame > .astro { position: relative; z-index: 1; width: auto; height: 62%; object-fit: contain; }
+/* Warm variant + pixel sprite (Levitating Larry): the 22×29 sprite is scaled up crisp */
+.frame.space-frame.warm { background: radial-gradient(55% 75% at 50% 45%, rgb(244 203 77 / 0.16), transparent 70%), #0d1117; }
+.frame.space-frame > .sprite {
+  position: relative; z-index: 1; width: auto; height: 66%; object-fit: contain; image-rendering: pixelated;
+  filter: drop-shadow(0 0 18px rgb(244 203 77 / 0.35)) drop-shadow(0 0 1px rgb(255 240 200 / 0.6));
+}
 
 /* Controls: prev · named tabs · next · pause */
 .showcase-nav { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
@@ -441,7 +447,11 @@ html:not(.js) .needs-js { display: none !important; }
   display: grid; place-items: center;
 }
 .video .play::before { content: ""; border-style: solid; border-width: 11px 0 11px 18px; border-color: transparent transparent transparent var(--on-accent); margin-left: 4px; }
-.video iframe { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; border: 0; }
+.video iframe, .video video { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; border: 0; background: #000; }
+.video.trailer { box-shadow: 0 26px 60px -30px rgb(0 0 0 / 0.9), 0 0 0 1px var(--line-strong); }
+/* Play button sits in the poster's empty bottom-left corner so it never covers the text */
+.video.trailer .play { inset: auto auto clamp(12px, 3vw, 28px) clamp(12px, 3vw, 28px); width: clamp(60px, 9vw, 88px); height: clamp(44px, 6.4vw, 62px); }
+.video.trailer > img { opacity: 0.92; }
 
 /* ---------- Levitate (Larry) ---------- */
 .levitate { display: block; }
@@ -450,6 +460,7 @@ html:not(.js) .needs-js { display: none !important; }
   .levitate { animation: levitate 3.2s ease-in-out infinite; }
 }
 .theme-sun { --accent: var(--sun); }
+.trio { color: var(--sun); letter-spacing: 0.2em; font-size: 0.8em; white-space: nowrap; }
 
 /* ---------- More games strip (game pages) ---------- */
 .mini-games { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 14px; }

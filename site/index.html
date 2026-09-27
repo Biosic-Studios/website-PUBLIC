@@ -22,11 +22,11 @@
 <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-next-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pixelify-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://img.itch.zone">
-<link rel="preconnect" href="https://m.gjcdn.net">
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js" defer></script>
 <script type="speculationrules">{"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Biosic Studios","url":"https://biosicstudios.com/","logo":"https://biosicstudios.com/icon-512.png","email":"partners@biosicstudios.com","contactPoint":{"@type":"ContactPoint","contactType":"business inquiries","email":"partners@biosicstudios.com","availableLanguage":"English"},"sameAs":["https://biosicstudios.itch.io/","https://www.youtube.com/channel/UCl_Kg3ampLr_eGNiyWTA5pA","https://twitter.com/biosicstudios"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Biosic Studios trailer","description":"Thirty seconds in orbit with Biosic Studios: Hungerhold, Levitating Larry, 420 Tycoon and 420 Clicks Later.","thumbnailUrl":"https://biosicstudios.com/assets/video/trailer-poster.webp","uploadDate":"2026-09-27","duration":"PT29.5S","contentUrl":"https://biosicstudios.com/assets/video/biosic-studios-trailer.mp4","embedUrl":"https://biosicstudios.com/#trailer"}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -53,7 +53,7 @@
         <div class="stack">
           <span class="eyebrow sky">Independent game studio</span>
           <p class="lede">Games you can pick up in a minute and still be playing a year later.</p>
-          <div class="btns"><a class="btn ghost sm" href="#games">All games</a><a class="btn primary sm" href="/contact/">Work with us</a></div>
+          <div class="btns"><a class="btn ghost sm" href="#trailer">Watch the trailer</a><a class="btn ghost sm" href="#games">All games</a><a class="btn primary sm" href="/contact/">Work with us</a></div>
         </div>
       </div>
 
@@ -75,17 +75,16 @@
           </article>
 
           <article class="slide" id="slide-levitating-larry" data-game="levitating-larry" data-title="Levitating Larry" aria-roledescription="slide" aria-label="Levitating Larry" style="--accent: var(--sun)">
-            <div class="slide-art levitate">
-              <div class="frame fit" style="--fit-bg: #ffff00">
-                <span class="fallback" aria-hidden="true">LEVITATING LARRY</span>
-                <img src="https://m.gjcdn.net/game-header/950/12019-ay4xgfv7-v4.jpg" decoding="async" referrerpolicy="no-referrer" alt="Levitating Larry: a cartoon Larry floating on a bright yellow background">
+            <div class="slide-art">
+              <div class="frame space-frame warm">
+                <img class="sprite levitate" src="/levitating-larry/img/larry.png" width="22" height="29" decoding="async" alt="Levitating Larry: a pixel-art man in a suit and red cape, floating in space">
               </div>
             </div>
             <div class="slide-copy">
-              <span class="kicker">Classic series · PC &amp; Android</span>
+              <span class="kicker">A Biosic original</span>
               <h2>LEVITATING LARRY</h2>
-              <p>A man named Larry. He levitates. Three games of tapping, floating and dodging, from the original PC platformer to <em>Levitating Larry Returns</em>.</p>
-              <div class="btns"><a class="btn accent" href="/levitating-larry/">Meet Larry</a><a class="btn ghost" href="/levitating-larry/#trailer">Watch the trailer</a></div>
+              <p>A man named Larry. He levitates. Sharp suit, red cape, zero respect for gravity. He's not done floating. <span class="trio" aria-hidden="true">✦✦✦</span></p>
+              <div class="btns"><a class="btn accent" href="/levitating-larry/">Meet Larry</a></div>
             </div>
           </article>
 
@@ -152,6 +151,20 @@
     </div>
   </section>
 
+  <section id="trailer" aria-labelledby="trailer-h">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Studio trailer</span>
+        <h2 id="trailer-h">30 SECONDS IN ORBIT</h2>
+      </div>
+      <a class="video trailer" href="/assets/video/biosic-studios-trailer.mp4" data-mp4="/assets/video/biosic-studios-trailer.mp4" aria-label="Play the Biosic Studios trailer (30 seconds, with sound)">
+        <img src="/assets/video/trailer-poster.webp" srcset="/assets/video/trailer-poster-640.webp 640w, /assets/video/trailer-poster.webp 1280w" sizes="(max-width: 1100px) 92vw, 1040px" width="1280" height="720" loading="lazy" decoding="async" alt="Trailer still: Levitating Larry, a pixel-art man in a suit and red cape, floating in space">
+        <span class="play" aria-hidden="true"></span>
+      </a>
+      <p class="muted small">Hungerhold, Levitating Larry, 420 Tycoon and 420 Clicks Later in 30 seconds. Sound on ✦</p>
+    </div>
+  </section>
+
   <section class="band" id="games" aria-labelledby="games-h">
     <div class="wrap stack-lg">
       <div class="stack">
@@ -181,18 +194,17 @@
           </div>
         </article>
 
-        <article class="game-card" data-game="levitating-larry" data-tags="play classic">
+        <article class="game-card" data-game="levitating-larry" data-tags="classic">
           <a class="frame-link" href="/levitating-larry/" tabindex="-1" aria-hidden="true">
-            <div class="frame fit" style="--fit-bg: #ffff00">
-              <span class="fallback">LEVITATING LARRY</span>
-              <img src="https://m.gjcdn.net/game-header/950/12019-ay4xgfv7-v4.jpg" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="">
+            <div class="frame space-frame warm">
+              <img class="sprite levitate" src="/levitating-larry/img/larry.png" width="22" height="29" loading="lazy" decoding="async" alt="">
             </div>
           </a>
           <div class="body">
-            <div class="badges"><span class="badge classic">Classic series</span><span class="badge">PC</span><span class="badge">Android</span></div>
+            <div class="badges"><span class="badge classic">Biosic original</span></div>
             <h3>Levitating Larry</h3>
-            <p class="muted">A man named Larry. He levitates. Three games of tapping, floating and dodging.</p>
-            <div class="links"><a href="/levitating-larry/">Meet Larry →</a><a href="https://gamejolt.com/games/levitating-larry/12019" rel="noopener">Game Jolt</a></div>
+            <p class="muted">A man named Larry. He levitates. Our longest-floating character, and he's not done yet.</p>
+            <div class="links"><a href="/levitating-larry/">Meet Larry →</a></div>
           </div>
         </article>
 

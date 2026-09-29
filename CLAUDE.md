@@ -11,9 +11,9 @@
 
 ## Rules
 
-- The Hungerhold prototype is **gated**. Never publish a playable build here
-  without the owner's explicit OK; link "request playtest access" emails
-  instead.
+- The playable Hungerhold build is hosted on **itch.io**, never in this repo:
+  its licensed music and art must not be redistributed as raw files in a
+  public repo. Link to the itch.io page instead.
 - Static HTML + one stylesheet (`site/assets/site.css`) + one script
   (`site/assets/site.js`). Reuse existing tokens and classes before adding new ones.
 - Every page sets `--accent` (default logo blue; Hungerhold

@@ -40,6 +40,7 @@ This creates `site/<slug>/index.html` and adds the game to the home slider, the 
 - **Fonts:** Pixelify Sans for headings and buttons, Atkinson Hyperlegible Next for everything else.
 - **Levitating Larry:** `site/levitating-larry/img/larry.png` is a tiny 22×29 sprite. Show it with the `.sprite` class (inside a `.frame.space-frame.warm`) so it scales up pixel-sharp.
 - **Studio trailer:** `site/assets/video/` (MP4 + poster). It plays on the home page (`#trailer`, click to load) and is downloadable from the press kit.
+- **Hungerhold media:** screenshots in `site/hungerhold/img/` (full size + `-640` thumbnails), trailer in `site/hungerhold/media/`. The playable build lives on itch.io, not here.
 
 ## Contact
 

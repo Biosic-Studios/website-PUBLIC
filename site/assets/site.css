@@ -423,6 +423,13 @@ html:not(.js) .needs-js { display: none !important; }
 /* ---------- Lists / misc ---------- */
 .list { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--dust); max-width: 68ch; }
 .list b { color: var(--bone); }
+
+/* Screenshot gallery: thumbnails that open the full-size shot */
+.gallery figure { margin: 0; display: grid; gap: 8px; }
+.gallery a { display: block; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+.gallery img { display: block; width: 100%; height: auto; transition: transform 200ms ease; }
+.gallery a:hover img, .gallery a:focus-visible img { transform: scale(1.03); }
+.gallery figcaption { font-size: 0.9rem; color: var(--dust); }
 .divider { border: 0; border-top: 1px dashed var(--line-strong); margin: 0; }
 .callout {
   border-left: 3px solid var(--accent); background: var(--panel); padding: 16px 20px; border-radius: 0 var(--radius) var(--radius) 0;

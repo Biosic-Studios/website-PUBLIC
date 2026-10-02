@@ -24,6 +24,7 @@
   `showcase:slides:end`, `showcase:tabs:end`, `games:cards:end` and
   `footer:games:end` comment markers; keep them.
 - Contact is `partners@biosicstudios.com` via `mailto:` links with a
-  subject. `/contact/?topic=<partner|business|ai|press|playtest|art>` preselects a topic.
+  subject. `/contact/?topic=<partner|business|ai|press|playtest|art>` preselects a topic
+  (`playtest` is now "Hungerhold feedback"; the key stays so old links work).
 - Before pushing: `node tools/check-site.mjs`, and preview at desktop and
   ~390px width with no horizontal scroll. Merging to `main` deploys.

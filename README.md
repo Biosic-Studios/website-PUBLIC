@@ -24,7 +24,7 @@ Open a pull request; merging to `main` publishes in about a minute.
 node tools/new-game.mjs star-farm "Star Farm" "A cozy farming game on a drifting space station." --status dev --accent water
 ```
 
-This creates `site/<slug>/index.html` and adds a card to the home page ("More from Biosic"), a link to every footer and an entry to the sitemap. Then:
+This creates `site/<slug>/index.html` and adds a card to the home page ("More from Biosic"), a section to the All games page (`/games/`), a link to every footer and an entry to the sitemap. Then:
 
 1. Add the cover image at `site/<slug>/img/cover.png` (16:9, about 1280×720).
 2. Fill in the remaining `{{PLACEHOLDERS}}` it lists. The checker won't pass until they're done.
@@ -41,6 +41,8 @@ A new **Levitating Larry** game also goes in the header's Larry dropdown (`<deta
 3. **More from Biosic** (`#games`): one card per game.
 4. **Studio trailer** (`#trailer`) and **Work with us** (`#contact`).
 
+`/games/` lists every game with its details (genre, where to play, price). Keep it in step with the home cards; the checker fails if a home card has no section there.
+
 ## Brand
 
 - **Logo:** `site/assets/brand/`. The site uses the `.webp` files; the `.png` files are the press-kit downloads.
@@ -49,7 +51,7 @@ A new **Levitating Larry** game also goes in the header's Larry dropdown (`<deta
 - **Fonts:** Pixelify Sans for headings and buttons, Atkinson Hyperlegible Next for everything else.
 - **Levitating Larry:** `site/levitating-larry/img/larry.png` is a tiny 22×29 sprite. Show it with the `.sprite` class (inside a `.frame.space-frame.warm`) so it scales up pixel-sharp.
 - **Studio trailer:** `site/assets/video/` (MP4 + poster). It plays on the home page (`#trailer`, click to load) and is downloadable from the press kit.
-- **Hungerhold:** the lead line is "Every life teaches the next." Screenshots are in `site/hungerhold/img/` (full size + `-640` thumbnails); `hero-*.webp` are the same shots cropped without the interface, for the big headers. The playable build lives on itch.io, not here.
+- **Hungerhold:** the lead line is "Every life teaches the next.", then "Hand-me-down survival: one short life, one family that remembers." Say "make" and "know-how", not "craft"; no Maslow, and no "a world that reacts" or "breaks" as a headline. Screenshots are in `site/hungerhold/img/` (full size + `-640` thumbnails); `hero-*.webp` are the same shots cropped without the interface, for the big headers. The playable build lives on itch.io, not here.
 - **Levitating Larry Encore:** `site/levitating-larry/encore/`, a coming-soon page. `encore-og.png` is its share card.
 
 ## Contact

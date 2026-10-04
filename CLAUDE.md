@@ -23,10 +23,15 @@
 - The header's "Levitating Larry" dropdown is a `<details class="menu">`
   (Levitating Larry, Levitating Larry Encore). It works without JS.
 - New game: `node tools/new-game.mjs …` (see README). It relies on the
-  `games:cards:end` and `footer:games:end` comment markers; keep them.
-- Hungerhold copy leads with "Every life teaches the next." The checker
-  fails on retired lines (see `RETIRED` in `tools/check-site.mjs`). No
-  Hungerhold trailer is on the site until there's one without them.
+  `games:cards:end`, `games:list:end` (on `/games/`) and `footer:games:end`
+  comment markers; keep them.
+- Hungerhold copy leads with "Every life teaches the next." and "Hand-me-down
+  survival: one short life, one family that remembers." It describes only
+  what the live build does; v3.0 features are marked in progress. Say
+  "make"/"know-how", not "craft". The checker fails on retired lines (see
+  `RETIRED` in `tools/check-site.mjs`). No Hungerhold trailer is on the site
+  until there's one without them.
+- Keep Hungerhold family-friendly: the 420 games stay off its page.
 - Contact is `partners@biosicstudios.com` via `mailto:` links with a
   subject. `/contact/?topic=<partner|business|ai|press|playtest|art>` preselects a topic
   (`playtest` is now "Hungerhold feedback"; the key stays so old links work).

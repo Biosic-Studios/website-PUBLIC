@@ -3,7 +3,7 @@
 //   node tools/check-site.mjs
 // Fails (exit 1) on: leftover {{PLACEHOLDERS}}, missing page basics (title, description, favicon, ...),
 // invalid JSON-LD/speculation rules, headers/footers out of sync, a game page with no card
-// on the home page, retired marketing lines,
+// on the home page or the All games page, retired marketing lines,
 // internal links or images that point at nothing, #anchors that don't exist,
 // and pages missing from (or dead entries in) sitemap.xml.
 import fs from 'node:fs';
@@ -12,7 +12,7 @@ import path from 'node:path';
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'site');
 const ORIGIN = 'https://biosicstudios.com';
 // Lines the studio no longer uses in marketing (lead with "Every life teaches the next.").
-const RETIRED = [/Starve\.?\s+Learn\.?\s+Reign/i, /empty stomach to a crown/i];
+const RETIRED = [/Starve\.?\s+Learn\.?\s+Reign/i, /empty stomach to a crown/i, /\bMaslow/i, /a world that reacts/i];
 const isNoindex = (src) => /<meta name="robots" content="noindex/.test(src);
 
 const problems = [];
@@ -105,6 +105,11 @@ for (const page of pages) {
   if (!/"@type":"VideoGame"/.test(html[page])) continue;
   const url = '/' + page.replace(/index\.html$/, '');
   if (!cardLinks.has(url)) report('index.html', `game page ${url} has no card in the home games grid`);
+}
+// The All games page (/games/) has a section for every game on the home page.
+const catalog = html['games/index.html'] ?? '';
+for (const game of cards) {
+  if (!catalog.includes(`data-game="${game}"`)) report('games/index.html', `no section for "${game}" (data-game="${game}")`);
 }
 
 // Sitemap: every public page listed, every entry real.

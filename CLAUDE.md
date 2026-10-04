@@ -31,9 +31,10 @@
   "life", not "craft", "recipe" or "a run". No em or en dashes in visible
   text. The checker fails on retired lines and dashes (see `RETIRED` in
   `tools/check-site.mjs`).
-- The v3.0 trailer is self-hosted (`site/hungerhold/media/`) with its
-  required credits under it on `/hungerhold/#trailer`; keep them together.
-  Swap it for a YouTube embed (`a.video[data-yt]`) once one is posted.
+- The v3.0 trailer plays from YouTube (`a.video[data-yt]`, click to play,
+  youtube-nocookie) on `/hungerhold/#trailer`, with its required credits
+  under it; keep them together. The MP4 in `site/hungerhold/media/` stays
+  for the press-kit download.
 - Screenshots and headers use only real captures from the game.
 - Keep Hungerhold family-friendly: the 420 games stay off its page.
 - Contact is `partners@biosicstudios.com` via `mailto:` links with a

@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.classList.add('js')</script>
-<title>Biosic Studios · Game Development. App Design. Endless Fun.</title>
-<meta name="description" content="Biosic Studios is an independent game studio: Hungerhold, the Levitating Larry series, 420 Tycoon and more. We also partner on business guidance and AI mentorship.">
+<title>Biosic Studios · Hungerhold v2.2.1 out now</title>
+<meta name="description" content="Biosic Studios is an independent game studio. Hungerhold v2.2.1 is out now, free in your browser, and v3.0 is in the works. Plus Levitating Larry, Levitating Larry Encore (coming soon), 420 Tycoon and 420 Clicks Later.">
 <link rel="canonical" href="https://biosicstudios.com/">
 <meta name="theme-color" content="#0e1116">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Biosic Studios">
 <meta property="og:title" content="Biosic Studios">
-<meta property="og:description" content="Independent games you can pick up in a minute and still be playing a year later.">
+<meta property="og:description" content="Hungerhold v2.2.1 is out now: every life teaches the next. Free in your browser.">
 <meta property="og:image" content="https://biosicstudios.com/assets/brand/og.png">
 <meta property="og:url" content="https://biosicstudios.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,182 +33,132 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Biosic Studios home"><img src="/assets/brand/astronaut-80.webp" alt="" width="62" height="80">BIOSIC <span>STUDIOS</span></a>
-    <nav class="nav" aria-label="Main">
-      <ul>
-        <li><a href="/#games">Games</a></li>
-        <li><a href="/hungerhold/">Hungerhold</a></li>
-        <li><a href="/levitating-larry/"><span class="hide-sm">Levitating </span>Larry</a></li>
-        <li><a class="nav-cta" href="/contact/"><span class="hide-sm">Work with us</span><span class="show-sm">Contact</span></a></li>
-      </ul>
-    </nav>
+    <div class="bar">
+      <a class="brand" href="/" aria-label="Biosic Studios home"><img src="/assets/brand/astronaut-80.webp" alt="" width="62" height="80">BIOSIC <span>STUDIOS</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="/hungerhold/"><span class="dot ember" aria-hidden="true"></span>Hungerhold</a></li>
+          <li>
+            <details class="menu">
+              <summary><span class="dot sun" aria-hidden="true"></span><span class="hide-sm">Levitating </span>Larry</summary>
+              <ul class="menu-list">
+                <li><a href="/levitating-larry/"><span class="menu-art"><img src="/levitating-larry/img/larry.png" alt="" width="22" height="29" loading="lazy"></span><span><b>Levitating Larry</b><small>The original. Meet Larry.</small></span></a></li>
+                <li><a href="/levitating-larry/encore/"><span class="menu-art encore"><img src="/levitating-larry/img/larry.png" alt="" width="22" height="29" loading="lazy"></span><span><b>Levitating Larry Encore</b><small>Coming soon</small></span></a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a class="nav-cta" href="/contact/"><span class="hide-sm">Work with us</span><span class="show-sm">Contact</span></a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 
 <main id="main">
-  <section class="hero space intro" aria-label="Biosic Studios">
+  <section class="flagship" aria-labelledby="hh-h" style="--accent: var(--ember)">
+    <div class="flagship-art" style="--focus: 34% 60%">
+      <img src="/hungerhold/img/hero-dusk-960.webp" srcset="/hungerhold/img/hero-dusk-960.webp 960w, /hungerhold/img/hero-dusk.webp 1920w" sizes="(max-width: 860px) 100vw, 74vw" width="1920" height="750" fetchpriority="high" decoding="async" alt="Hungerhold: a survivor by the campfire at dusk, just outside the family cave">
+    </div>
     <div class="wrap">
-      <div class="intro-row">
-        <h1 class="logo-h1"><img src="/assets/brand/logo.webp" srcset="/assets/brand/logo-480.webp 480w, /assets/brand/logo.webp 726w" sizes="(max-width: 700px) 220px, 330px" width="726" height="373" alt="Biosic Studios"></h1>
+      <div class="flagship-copy stack-lg">
+        <div class="badges"><span class="badge live lg">v2.2.1 · out now</span><span class="badge soon lg">v3.0 · in the works</span></div>
         <div class="stack">
-          <span class="eyebrow sky">Independent game studio</span>
-          <p class="lede">Games you can pick up in a minute and still be playing a year later.</p>
-          <div class="btns"><a class="btn ghost sm" href="#trailer">Watch the trailer</a><a class="btn ghost sm" href="#games">All games</a><a class="btn primary sm" href="/contact/">Work with us</a></div>
+          <span class="eyebrow">Biosic Studios presents</span>
+          <h1 id="hh-h">HUNGERHOLD</h1>
+          <p class="tagline">Every life teaches the next.</p>
+          <p class="lede">Wake in a cave with nothing. Keep your family fed, die, and hand everything you learned to your heir. A pixel survival game where one life fits an evening.</p>
         </div>
-      </div>
-
-      <div class="showcase" data-showcase role="region" aria-roledescription="carousel" aria-label="Our games" style="--sc-interval: 7s">
-        <div class="showcase-track">
-          <article class="slide" id="slide-hungerhold" data-game="hungerhold" data-title="Hungerhold" aria-roledescription="slide" aria-label="Hungerhold" style="--accent: var(--ember)">
-            <div class="slide-art">
-              <div class="frame pixel">
-                <span class="fallback" aria-hidden="true">HUNGERHOLD</span>
-                <img fetchpriority="high" src="/hungerhold/img/01-dusk-campfire-960.webp" srcset="/hungerhold/img/01-dusk-campfire-640.webp 640w, /hungerhold/img/01-dusk-campfire-960.webp 960w, /hungerhold/img/01-dusk-campfire.webp 1920w" sizes="(max-width: 760px) 92vw, 560px" width="1920" height="1080" decoding="async" alt="Hungerhold: a survivor by the campfire at dusk outside the family cave">
-              </div>
-            </div>
-            <div class="slide-copy">
-              <span class="kicker">Play free · Pixel survival</span>
-              <h2>HUNGERHOLD</h2>
-              <p>Starve. Learn. Reign. Wake in a cave with no memory and climb Maslow's hierarchy of needs, from an empty stomach to a crown, one generation at a time.</p>
-              <div class="btns"><a class="btn accent" href="https://biosicstudios.itch.io/hungerhold" rel="noopener">Play free on itch.io</a><a class="btn ghost" href="/hungerhold/">About the game</a></div>
-            </div>
-          </article>
-
-          <article class="slide" id="slide-levitating-larry" data-game="levitating-larry" data-title="Levitating Larry" aria-roledescription="slide" aria-label="Levitating Larry" style="--accent: var(--sun)">
-            <div class="slide-art">
-              <div class="frame space-frame warm">
-                <img class="sprite levitate" src="/levitating-larry/img/larry.png" width="22" height="29" decoding="async" alt="Levitating Larry: a pixel-art man in a suit and red cape, floating in space">
-              </div>
-            </div>
-            <div class="slide-copy">
-              <span class="kicker">A Biosic original</span>
-              <h2>LEVITATING LARRY</h2>
-              <p>A man named Larry. He levitates. Sharp suit, red cape, zero respect for gravity. He's not done floating. <span class="trio" aria-hidden="true">✦✦✦</span></p>
-              <div class="btns"><a class="btn accent" href="/levitating-larry/">Meet Larry</a></div>
-            </div>
-          </article>
-
-          <article class="slide" id="slide-420-tycoon" data-game="420-tycoon" data-title="420 Tycoon" aria-roledescription="slide" aria-label="420 Tycoon" style="--accent: var(--leaf)">
-            <div class="slide-art">
-              <div class="frame fit" style="--fit-bg: #02201c">
-                <span class="fallback" aria-hidden="true">420 TYCOON</span>
-                <img src="https://img.itch.zone/aW1nLzIyNDM1Njc1LnBuZw==/original/2uiAfa.png" decoding="async" referrerpolicy="no-referrer" alt="420 Tycoon: Flies High Edition cover art">
-              </div>
-            </div>
-            <div class="slide-copy">
-              <span class="kicker">Play free · Browser tycoon</span>
-              <h2>420 TYCOON</h2>
-              <p>Flies High Edition. Conquer turf, stack Toke'ns and build a dispensary empire, one block at a time.</p>
-              <div class="btns"><a class="btn accent" href="https://biosicstudios.itch.io/420-tycoon" rel="noopener">Play on itch.io</a></div>
-            </div>
-          </article>
-
-          <article class="slide" id="slide-420-clicks-later" data-game="420-clicks-later" data-title="420 Clicks Later" aria-roledescription="slide" aria-label="420 Clicks Later" style="--accent: var(--leaf)">
-            <div class="slide-art">
-              <div class="frame">
-                <span class="fallback" aria-hidden="true">420 CLICKS LATER</span>
-              </div>
-            </div>
-            <div class="slide-copy">
-              <span class="kicker">Play free · Browser clicker</span>
-              <h2>420 CLICKS LATER</h2>
-              <p>Tap for Toke'ns, upgrade your stash with gear like the Quantum Grinder, and chase the Sentient Blunt. Lo-fi soundtrack included.</p>
-              <div class="btns"><a class="btn accent" href="https://biosicstudios.itch.io/420-clicks-later" rel="noopener">Play on itch.io</a></div>
-            </div>
-          </article>
-
-          <!-- showcase:slides:end · new game slides go above this line (tools/new-game.mjs) -->
-          <article class="slide" id="slide-next" data-game="next" data-title="What's next" aria-roledescription="slide" aria-label="What's next" style="--accent: var(--sky-hi)">
-            <div class="slide-art">
-              <div class="frame space-frame">
-                <img class="astro levitate" src="/assets/brand/astronaut.webp" width="194" height="252" loading="lazy" decoding="async" alt="">
-              </div>
-            </div>
-            <div class="slide-copy">
-              <span class="kicker">Coming soon</span>
-              <h2>WHAT'S NEXT</h2>
-              <p>There's more in the workshop. Follow along to see new games first.</p>
-              <div class="btns"><a class="btn accent" href="https://www.youtube.com/channel/UCl_Kg3ampLr_eGNiyWTA5pA" rel="noopener">YouTube</a><a class="btn ghost" href="https://twitter.com/biosicstudios" rel="noopener">Follow on X</a></div>
-            </div>
-          </article>
+        <div class="btns">
+          <a class="btn primary" href="https://biosicstudios.itch.io/hungerhold" rel="noopener">Play free</a>
+          <a class="btn ghost" href="#new">What's new</a>
+          <a class="btn ghost" href="#trailer">Trailer</a>
         </div>
-
-        <div class="showcase-nav">
-          <button class="sc-btn sc-prev needs-js" type="button" aria-label="Previous game"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 5.4 14 4l-8 8 8 8 1.4-1.4L8.8 12z"/></svg></button>
-          <div class="sc-tabs">
-            <a class="sc-tab" href="#slide-hungerhold" style="--tab-accent: var(--ember)"><span class="label">Hungerhold</span><span class="bar"></span></a>
-            <a class="sc-tab" href="#slide-levitating-larry" style="--tab-accent: var(--sun)"><span class="label">Levitating Larry</span><span class="bar"></span></a>
-            <a class="sc-tab" href="#slide-420-tycoon" style="--tab-accent: var(--leaf)"><span class="label">420 Tycoon</span><span class="bar"></span></a>
-            <a class="sc-tab" href="#slide-420-clicks-later" style="--tab-accent: var(--leaf)"><span class="label">420 Clicks Later</span><span class="bar"></span></a>
-            <!-- showcase:tabs:end -->
-            <a class="sc-tab" href="#slide-next" style="--tab-accent: var(--sky-hi)"><span class="label">What's next</span><span class="bar"></span></a>
-          </div>
-          <button class="sc-btn sc-next needs-js" type="button" aria-label="Next game"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 18.6 10 20l8-8-8-8-1.4 1.4 6.6 6.6z"/></svg></button>
-          <button class="sc-btn sc-pause needs-js" type="button" aria-pressed="false" aria-label="Pause slideshow"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
-        </div>
-        <p class="sc-status sr-only" aria-live="polite"></p>
+        <p class="muted small">In your browser on itch.io, pay what you want. Keyboard, mouse, gamepad or touch. <a href="/hungerhold/">More about the game →</a></p>
       </div>
     </div>
   </section>
 
-  <section id="trailer" aria-labelledby="trailer-h">
+  <section class="band" id="new" aria-labelledby="new-h" style="--accent: var(--ember)">
     <div class="wrap stack-lg">
-      <div class="stack">
-        <span class="eyebrow">Studio trailer</span>
-        <h2 id="trailer-h">30 SECONDS IN ORBIT</h2>
+      <div class="section-head">
+        <div class="stack">
+          <span class="eyebrow">Hungerhold</span>
+          <h2 id="new-h">New in v2.2.1 · Coming in v3.0</h2>
+        </div>
+        <a href="/hungerhold/">About the game →</a>
       </div>
-      <a class="video trailer" href="/assets/video/biosic-studios-trailer.mp4" data-mp4="/assets/video/biosic-studios-trailer.mp4" aria-label="Play the Biosic Studios trailer (30 seconds, with sound)">
-        <img src="/assets/video/trailer-poster.webp" srcset="/assets/video/trailer-poster-640.webp 640w, /assets/video/trailer-poster.webp 1280w" sizes="(max-width: 1100px) 92vw, 1040px" width="1280" height="720" loading="lazy" decoding="async" alt="Trailer still: Levitating Larry, a pixel-art man in a suit and red cape, floating in space">
-        <span class="play" aria-hidden="true"></span>
-      </a>
-      <p class="muted small">Hungerhold, Levitating Larry, 420 Tycoon and 420 Clicks Later in 30 seconds. Sound on ✦</p>
-    </div>
-  </section>
-
-  <section class="band" id="games" aria-labelledby="games-h">
-    <div class="wrap stack-lg">
-      <div class="stack">
-        <span class="eyebrow">Our games</span>
-        <h2 id="games-h">PLAY SOMETHING</h2>
-      </div>
-      <div class="filters needs-js" data-filters="game-grid" role="group" aria-label="Filter games">
-        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
-        <button class="chip" type="button" data-filter="play" aria-pressed="false">Play now</button>
-        <button class="chip" type="button" data-filter="dev" aria-pressed="false">In development</button>
-        <button class="chip" type="button" data-filter="classic" aria-pressed="false">Classics</button>
-        <span class="count" aria-live="polite">4 games</span>
-      </div>
-      <div class="grid" id="game-grid">
-        <article class="game-card" data-game="hungerhold" data-tags="play dev">
-          <a class="frame-link" href="/hungerhold/" tabindex="-1" aria-hidden="true">
-            <div class="frame pixel">
-              <span class="fallback">HUNGERHOLD</span>
-              <img src="/hungerhold/img/01-dusk-campfire-640.webp" srcset="/hungerhold/img/01-dusk-campfire-640.webp 640w, /hungerhold/img/01-dusk-campfire-960.webp 960w" sizes="(max-width: 700px) 92vw, 360px" width="1920" height="1080" loading="lazy" decoding="async" alt="">
-            </div>
+      <div class="versions">
+        <article class="version now" aria-labelledby="v221-h">
+          <div class="badges"><span class="badge live">Out now</span></div>
+          <h3 id="v221-h"><small>Version 2.2.1</small>The world breaks now</h3>
+          <a class="frame pixel" href="/hungerhold/#gallery" aria-label="See the Hungerhold screenshots">
+            <img src="/hungerhold/img/04-digging-cave-in-640.webp" srcset="/hungerhold/img/04-digging-cave-in-640.webp 640w, /hungerhold/img/04-digging-cave-in.webp 1920w" sizes="(max-width: 900px) 92vw, 560px" width="640" height="360" loading="lazy" decoding="async" alt="A tunnel dug into layered earth and rock, with cave-in cracks spreading through the roof">
           </a>
-          <div class="body">
-            <div class="badges"><span class="badge live">Play free</span><span class="badge">Version 2.0</span></div>
-            <h3>Hungerhold</h3>
-            <p class="muted">Starve. Learn. Reign. Climb from a cave to a kingdom, one generation at a time.</p>
-            <div class="links"><a href="/hungerhold/">About Hungerhold →</a><a href="https://biosicstudios.itch.io/hungerhold" rel="noopener">Play on itch.io</a></div>
-          </div>
+          <ul class="ticks">
+            <li><b>The ground gives way.</b> Dig under a ledge and it trickles, then drops. A stone pick splits boulders and cracks old ruin walls.</li>
+            <li><b>Storms bring gales.</b> Weak trees come down and a lean-to can tear away. Lightning leaves craters and floods eat the riverbanks.</li>
+            <li><b>Still fair.</b> Everything warns you first, and the tombstone says how it happened.</li>
+            <li><b>A better first minute.</b> Every new family wakes to its own opening, the cave has secrets, and crafting explains itself.</li>
+            <li><b>Little things.</b> 30 new achievements ("Probably fine": eat the red mushroom), a sky for every homeland, fairer boars, and about forty fixes.</li>
+          </ul>
+          <div class="btns"><a class="btn primary sm" href="https://biosicstudios.itch.io/hungerhold" rel="noopener">Play v2.2.1 free</a><a class="btn ghost sm" href="/hungerhold/#new">All the changes</a></div>
         </article>
+        <article class="version next" aria-labelledby="v3-h">
+          <div class="badges"><span class="badge soon">In the works</span></div>
+          <h3 id="v3-h"><small>Version 3.0</small>The same game, and now it's ours</h3>
+          <ul class="ticks">
+            <li><b>A voice of its own.</b> An Elder who tells you off for eating raw meat, and tombstones that say something true and a little funny.</li>
+            <li><b>A story in every life.</b> Incidents and lore: leave the fire pit dark and a raccoon may raid the stores.</li>
+            <li><b>Making things makes sense.</b> Your family's know-how shows what you can make where you stand, and where to find what's missing.</li>
+            <li><b>Two optional mini-games.</b> Strike the spark by hand, or stare a wolf down with a burning brand.</li>
+            <li><b>Twice the variety.</b> More biomes, skies, weather and characters, so every heir looks like their own person.</li>
+            <li><b>A camp dog</b> for every family.</li>
+          </ul>
+          <p class="muted small">No date yet, and plans can change as we build. Follow along on <a href="https://biosicstudios.itch.io/hungerhold" rel="noopener">itch.io</a>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <article class="game-card" data-game="levitating-larry" data-tags="classic">
+  <section id="games" aria-labelledby="games-h">
+    <div class="wrap stack-lg">
+      <div class="section-head">
+        <div class="stack">
+          <span class="eyebrow">More from Biosic</span>
+          <h2 id="games-h">Keep playing</h2>
+          <p class="muted">Games you can pick up in a minute and still be playing a year later.</p>
+        </div>
+      </div>
+      <div class="grid games">
+        <article class="game-card" data-game="levitating-larry" style="--accent: var(--sun)">
           <a class="frame-link" href="/levitating-larry/" tabindex="-1" aria-hidden="true">
             <div class="frame space-frame warm">
               <img class="sprite levitate" src="/levitating-larry/img/larry.png" width="22" height="29" loading="lazy" decoding="async" alt="">
             </div>
           </a>
           <div class="body">
-            <div class="badges"><span class="badge classic">Biosic original</span></div>
+            <div class="badges"><span class="badge classic">The original</span></div>
             <h3>Levitating Larry</h3>
-            <p class="muted">A man named Larry. He levitates. Our longest-floating character, and he's not done yet.</p>
+            <p class="muted">A man named Larry. He levitates. Sharp suit, red cape, zero respect for gravity.</p>
             <div class="links"><a href="/levitating-larry/">Meet Larry →</a></div>
           </div>
         </article>
 
-        <article class="game-card" data-game="420-tycoon" data-tags="play">
+        <article class="game-card" data-game="levitating-larry-encore" style="--accent: var(--sun)">
+          <a class="frame-link" href="/levitating-larry/encore/" tabindex="-1" aria-hidden="true">
+            <div class="frame space-frame spotlight">
+              <img class="sprite levitate" src="/levitating-larry/img/larry.png" width="22" height="29" loading="lazy" decoding="async" alt="">
+            </div>
+          </a>
+          <div class="body">
+            <div class="badges"><span class="badge soon">Coming soon</span></div>
+            <h3>Levitating Larry Encore</h3>
+            <p class="muted">He's not done floating. Larry is coming back for an encore.</p>
+            <div class="links"><a href="/levitating-larry/encore/">Take a peek →</a></div>
+          </div>
+        </article>
+
+        <article class="game-card" data-game="420-tycoon" style="--accent: var(--leaf)">
           <a class="frame-link" href="https://biosicstudios.itch.io/420-tycoon" rel="noopener" tabindex="-1" aria-hidden="true">
             <div class="frame fit" style="--fit-bg: #02201c">
               <span class="fallback">420 TYCOON</span>
@@ -216,21 +166,21 @@
             </div>
           </a>
           <div class="body">
-            <div class="badges"><span class="badge live">Play free</span><span class="badge">Browser</span><span class="badge">Tycoon</span></div>
-            <h3>420 Tycoon · Flies High Edition</h3>
-            <p class="muted">Conquer turf. Stack Toke'ns. Rule the weed game.</p>
+            <div class="badges"><span class="badge live">Play free</span><span class="badge">Browser</span></div>
+            <h3>420 Tycoon</h3>
+            <p class="muted">Flies High Edition. Conquer turf, stack Toke'ns and build a dispensary empire.</p>
             <div class="links"><a href="https://biosicstudios.itch.io/420-tycoon" rel="noopener">Play on itch.io →</a></div>
           </div>
         </article>
 
-        <article class="game-card" data-game="420-clicks-later" data-tags="play">
+        <article class="game-card" data-game="420-clicks-later" style="--accent: var(--leaf)">
           <a class="frame-link" href="https://biosicstudios.itch.io/420-clicks-later" rel="noopener" tabindex="-1" aria-hidden="true">
             <div class="frame">
               <span class="fallback">420 CLICKS LATER</span>
             </div>
           </a>
           <div class="body">
-            <div class="badges"><span class="badge live">Play free</span><span class="badge">Browser</span><span class="badge">Clicker</span></div>
+            <div class="badges"><span class="badge live">Play free</span><span class="badge">Browser</span></div>
             <h3>420 Clicks Later</h3>
             <p class="muted">Tap for Toke'ns, upgrade your stash, and chase the Sentient Blunt.</p>
             <div class="links"><a href="https://biosicstudios.itch.io/420-clicks-later" rel="noopener">Play on itch.io →</a></div>
@@ -238,18 +188,24 @@
         </article>
 
         <!-- games:cards:end · new game cards go above this line (tools/new-game.mjs) -->
-        <article class="game-card soon" data-game="next" data-tags="soon">
-          <div class="frame space-frame">
-            <img class="astro levitate" src="/assets/brand/astronaut.webp" width="194" height="252" loading="lazy" decoding="async" alt="">
-          </div>
-          <div class="body">
-            <div class="badges"><span class="badge soon">Coming soon</span></div>
-            <h3>What's next</h3>
-            <p class="muted">There's more in the workshop. Follow along to see it first.</p>
-            <div class="links"><a href="https://www.youtube.com/channel/UCl_Kg3ampLr_eGNiyWTA5pA" rel="noopener">YouTube</a><a href="https://twitter.com/biosicstudios" rel="noopener">X</a></div>
-          </div>
-        </article>
       </div>
+    </div>
+  </section>
+
+  <section class="band" id="trailer" aria-labelledby="trailer-h">
+    <div class="wrap stack-lg">
+      <div class="section-head">
+        <div class="stack">
+          <span class="eyebrow">Studio trailer</span>
+          <h2 id="trailer-h">30 seconds in orbit</h2>
+        </div>
+        <a href="/press/#media">Download it →</a>
+      </div>
+      <a class="video trailer" href="/assets/video/biosic-studios-trailer.mp4" data-mp4="/assets/video/biosic-studios-trailer.mp4" aria-label="Play the Biosic Studios trailer (30 seconds, with sound)">
+        <img src="/assets/video/trailer-poster.webp" srcset="/assets/video/trailer-poster-640.webp 640w, /assets/video/trailer-poster.webp 1280w" sizes="(max-width: 1160px) 92vw, 1096px" width="1280" height="720" loading="lazy" decoding="async" alt="Trailer still: Levitating Larry, a pixel-art man in a suit and red cape, floating in space">
+        <span class="play" aria-hidden="true"></span>
+      </a>
+      <p class="muted small">Hungerhold, Levitating Larry, 420 Tycoon and 420 Clicks Later in 30 seconds. Sound on ✦</p>
     </div>
   </section>
 
@@ -258,7 +214,7 @@
       <div class="contact-band">
         <div class="stack">
           <span class="eyebrow">Work with us</span>
-          <h2 id="contact-h">LET'S TALK</h2>
+          <h2 id="contact-h">Let's talk</h2>
           <p class="muted">Partnerships and publishing, business guidance, AI mentorship, press, game feedback or commissions. One email reaches us.</p>
           <div class="topic-links">
             <a class="chip-link" href="mailto:partners@biosicstudios.com?subject=Partnership%20inquiry">Partnerships</a>
@@ -289,6 +245,7 @@
       <ul>
         <li><a href="/hungerhold/">Hungerhold</a></li>
         <li><a href="/levitating-larry/">Levitating Larry</a></li>
+        <li><a href="/levitating-larry/encore/">Levitating Larry Encore</a></li>
         <li><a href="https://biosicstudios.itch.io/420-tycoon" rel="noopener">420 Tycoon</a></li>
         <li><a href="https://biosicstudios.itch.io/420-clicks-later" rel="noopener">420 Clicks Later</a></li>
         <!-- footer:games:end -->

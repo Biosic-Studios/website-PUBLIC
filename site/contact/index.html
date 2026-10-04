@@ -30,15 +30,24 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Biosic Studios home"><img src="/assets/brand/astronaut-80.webp" alt="" width="62" height="80">BIOSIC <span>STUDIOS</span></a>
-    <nav class="nav" aria-label="Main">
-      <ul>
-        <li><a href="/#games">Games</a></li>
-        <li><a href="/hungerhold/">Hungerhold</a></li>
-        <li><a href="/levitating-larry/"><span class="hide-sm">Levitating </span>Larry</a></li>
-        <li><a class="nav-cta" href="/contact/" aria-current="page"><span class="hide-sm">Work with us</span><span class="show-sm">Contact</span></a></li>
-      </ul>
-    </nav>
+    <div class="bar">
+      <a class="brand" href="/" aria-label="Biosic Studios home"><img src="/assets/brand/astronaut-80.webp" alt="" width="62" height="80">BIOSIC <span>STUDIOS</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="/hungerhold/"><span class="dot ember" aria-hidden="true"></span>Hungerhold</a></li>
+          <li>
+            <details class="menu">
+              <summary><span class="dot sun" aria-hidden="true"></span><span class="hide-sm">Levitating </span>Larry</summary>
+              <ul class="menu-list">
+                <li><a href="/levitating-larry/"><span class="menu-art"><img src="/levitating-larry/img/larry.png" alt="" width="22" height="29" loading="lazy"></span><span><b>Levitating Larry</b><small>The original. Meet Larry.</small></span></a></li>
+                <li><a href="/levitating-larry/encore/"><span class="menu-art encore"><img src="/levitating-larry/img/larry.png" alt="" width="22" height="29" loading="lazy"></span><span><b>Levitating Larry Encore</b><small>Coming soon</small></span></a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a class="nav-cta" href="/contact/" aria-current="page"><span class="hide-sm">Work with us</span><span class="show-sm">Contact</span></a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -61,7 +70,7 @@
     <div class="wrap stack-lg">
       <div class="stack">
         <span class="eyebrow">Topics</span>
-        <h2 id="help-h">HOW WE CAN HELP</h2>
+        <h2 id="help-h">How we can help</h2>
       </div>
       <div class="grid">
         <article class="card topic" id="topic-partner">
@@ -108,7 +117,7 @@
     <div class="wrap stack-lg">
       <div class="stack">
         <span class="eyebrow">Write to us</span>
-        <h2 id="compose-h">DRAFT YOUR EMAIL</h2>
+        <h2 id="compose-h">Draft your email</h2>
         <p class="muted">Nothing is sent from this page. It fills in an email for you to send from your own account.</p>
       </div>
       <form class="card composer" data-composer data-to="partners@biosicstudios.com">
@@ -151,6 +160,7 @@
       <ul>
         <li><a href="/hungerhold/">Hungerhold</a></li>
         <li><a href="/levitating-larry/">Levitating Larry</a></li>
+        <li><a href="/levitating-larry/encore/">Levitating Larry Encore</a></li>
         <li><a href="https://biosicstudios.itch.io/420-tycoon" rel="noopener">420 Tycoon</a></li>
         <li><a href="https://biosicstudios.itch.io/420-clicks-later" rel="noopener">420 Clicks Later</a></li>
         <!-- footer:games:end -->

@@ -4,9 +4,9 @@
 //   node tools/new-game.mjs <slug> "<Name>" "<one-line pitch>" [--status dev|play|classic|soon] [--accent ember|sun|leaf|water|sky-hi]
 //   node tools/new-game.mjs star-farm "Star Farm" "A cozy farming game on a drifting space station." --status dev --accent water
 //
-// It creates site/<slug>/index.html from tools/game-page.template.html, then adds the
-// game to the home slider (slide + tab), the game grid, every footer, and
-// sitemap.xml. Anything it can't know (cover art, features, links) is left as a
+// It creates site/<slug>/index.html from tools/game-page.template.html, then adds a
+// card to the home page's "More from Biosic" grid, a link to every footer, and an
+// entry to sitemap.xml. Anything it can't know (cover art, features, links) is left as a
 // {{PLACEHOLDER}} that tools/check-site.mjs flags until you fill it in.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -16,10 +16,10 @@ const SITE = path.join(REPO, 'site');
 const TEMPLATE = path.join(REPO, 'tools', 'game-page.template.html');
 
 const STATUS = {
-  dev: { kicker: 'In development', badge: '<span class="badge dev">In development</span>', tags: 'dev' },
-  play: { kicker: 'Play free', badge: '<span class="badge live">Play free</span>', tags: 'play' },
-  classic: { kicker: 'Classic', badge: '<span class="badge classic">Classic</span>', tags: 'classic' },
-  soon: { kicker: 'Coming soon', badge: '<span class="badge soon">Coming soon</span>', tags: 'soon' },
+  dev: '<span class="badge dev">In development</span>',
+  play: '<span class="badge live">Play free</span>',
+  classic: '<span class="badge classic">Classic</span>',
+  soon: '<span class="badge soon">Coming soon</span>',
 };
 const ACCENTS = ['ember', 'sun', 'leaf', 'water', 'sky-hi'];
 
@@ -49,7 +49,7 @@ const NAME = esc(name);
 const CAPS = esc(name.toUpperCase());
 const PITCH = esc(pitch);
 const accent = `var(--${opts.accent})`;
-const status = STATUS[opts.status];
+const badge = STATUS[opts.status];
 const cover = `/${slug}/img/cover.png`;
 
 // Insert `block` on its own line just above the line containing `marker`.
@@ -78,25 +78,9 @@ let page = fs.readFileSync(TEMPLATE, 'utf8')
 fs.mkdirSync(path.join(SITE, slug, 'img'), { recursive: true });
 fs.writeFileSync(path.join(SITE, slug, 'index.html'), page);
 
-// ---- 2. Home: slide, tab and card
+// ---- 2. Home: a card in the "More from Biosic" grid
 const home = path.join(SITE, 'index.html');
-insertAbove(home, '<!-- showcase:slides:end', `<article class="slide" id="slide-${slug}" data-game="${slug}" data-title="${NAME}" aria-roledescription="slide" aria-label="${NAME}" style="--accent: ${accent}">
-  <div class="slide-art">
-    <div class="frame">
-      <span class="fallback" aria-hidden="true">${CAPS}</span>
-      <img src="${cover}" decoding="async" alt="${NAME} cover art">
-    </div>
-  </div>
-  <div class="slide-copy">
-    <span class="kicker">${status.kicker}</span>
-    <h2>${CAPS}</h2>
-    <p>${PITCH}</p>
-    <div class="btns"><a class="btn accent" href="/${slug}/">See ${NAME}</a></div>
-  </div>
-</article>
-`);
-insertAbove(home, '<!-- showcase:tabs:end', `<a class="sc-tab" href="#slide-${slug}" style="--tab-accent: ${accent}"><span class="label">${NAME}</span><span class="bar"></span></a>`);
-insertAbove(home, '<!-- games:cards:end', `<article class="game-card" data-game="${slug}" data-tags="${status.tags}">
+insertAbove(home, '<!-- games:cards:end', `<article class="game-card" data-game="${slug}" style="--accent: ${accent}">
   <a class="frame-link" href="/${slug}/" tabindex="-1" aria-hidden="true">
     <div class="frame">
       <span class="fallback">${CAPS}</span>
@@ -104,7 +88,7 @@ insertAbove(home, '<!-- games:cards:end', `<article class="game-card" data-game=
     </div>
   </a>
   <div class="body">
-    <div class="badges">${status.badge}</div>
+    <div class="badges">${badge}</div>
     <h3>${NAME}</h3>
     <p class="muted">${PITCH}</p>
     <div class="links"><a href="/${slug}/">See ${NAME} →</a></div>
@@ -128,7 +112,7 @@ fs.writeFileSync(sitemap, fs.readFileSync(sitemap, 'utf8')
 const left = [...new Set(page.match(/\{\{[^}]+\}\}/g) || [])];
 console.log(`✓ Added ${name}:
   • site/${slug}/index.html (new page)
-  • home slider slide + tab, game grid card
+  • a card on the home page (More from Biosic)
   • footer link on ${footerFiles.length} files, sitemap entry
 
 Next:
@@ -136,5 +120,5 @@ Next:
   2. Fill in the ${left.length} remaining placeholders in site/${slug}/index.html:
      ${left.join(', ')}
      (delete the trailer section if there's no video yet)
-  3. Point the slider/card button at a store or play link if it has one.
+  3. Point the home card's link at a store or play link if it has one.
   4. node tools/check-site.mjs, then preview: python3 -m http.server 8000 -d site`);

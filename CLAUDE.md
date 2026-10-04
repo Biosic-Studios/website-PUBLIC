@@ -25,12 +25,16 @@
 - New game: `node tools/new-game.mjs …` (see README). It relies on the
   `games:cards:end`, `games:list:end` (on `/games/`) and `footer:games:end`
   comment markers; keep them.
-- Hungerhold copy leads with "Every life teaches the next." and "Hand-me-down
-  survival: one short life, one family that remembers." It describes only
-  what the live build does; v3.0 features are marked in progress. Say
-  "make"/"know-how", not "craft". The checker fails on retired lines (see
-  `RETIRED` in `tools/check-site.mjs`). No Hungerhold trailer is on the site
-  until there's one without them.
+- Hungerhold copy leads with "Every life teaches the next." and calls the
+  genre a kinlike / hand-me-down survival. It describes only what the live
+  build does, with no dates for future things. Say "make"/"know-how" and
+  "life", not "craft", "recipe" or "a run". No em or en dashes in visible
+  text. The checker fails on retired lines and dashes (see `RETIRED` in
+  `tools/check-site.mjs`).
+- The v3.0 trailer is self-hosted (`site/hungerhold/media/`) with its
+  required credits under it on `/hungerhold/#trailer`; keep them together.
+  Swap it for a YouTube embed (`a.video[data-yt]`) once one is posted.
+- Screenshots and headers use only real captures from the game.
 - Keep Hungerhold family-friendly: the 420 games stay off its page.
 - Contact is `partners@biosicstudios.com` via `mailto:` links with a
   subject. `/contact/?topic=<partner|business|ai|press|playtest|art>` preselects a topic

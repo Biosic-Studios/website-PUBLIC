@@ -3,7 +3,7 @@
 //   node tools/check-site.mjs
 // Fails (exit 1) on: leftover {{PLACEHOLDERS}}, missing page basics (title, description, favicon, ...),
 // invalid JSON-LD/speculation rules, headers/footers out of sync, a game page with no card
-// on the home page or the All games page, retired marketing lines,
+// on the home page or the All games page, retired marketing lines, em/en dashes,
 // internal links or images that point at nothing, #anchors that don't exist,
 // and pages missing from (or dead entries in) sitemap.xml.
 import fs from 'node:fs';
@@ -12,7 +12,8 @@ import path from 'node:path';
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'site');
 const ORIGIN = 'https://biosicstudios.com';
 // Lines the studio no longer uses in marketing (lead with "Every life teaches the next.").
-const RETIRED = [/Starve\.?\s+Learn\.?\s+Reign/i, /empty stomach to a crown/i, /\bMaslow/i, /a world that reacts/i];
+const RETIRED = [/Starve\.?\s+Learn\.?\s+Reign/i, /empty stomach to a crown/i, /\bMaslow/i, /a world that reacts/i,
+  /\bTerraria\b/i, /\bNoita\b/i, /\bcraft(s|ed|ing)?\b/i, /\brecipes?\b/i];
 const isNoindex = (src) => /<meta name="robots" content="noindex/.test(src);
 
 const problems = [];
@@ -48,6 +49,10 @@ for (const page of pages) {
   const leftover = src.match(/\{\{[^}]*\}\}/);
   if (leftover) report(page, `unfilled template placeholder: ${leftover[0]}`);
   for (const re of RETIRED) if (re.test(src)) report(page, `retired marketing line: ${src.match(re)[0]}`);
+  // House style: no em or en dashes in visible text (use a period, colon, comma or " · ").
+  const visible = src.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '');
+  const dash = visible.match(/.{0,30}[\u2013\u2014].{0,30}/);
+  if (dash) report(page, `em or en dash in visible text: "${dash[0].trim()}"`);
   if (!has(src, /<html[^>]*\slang="/)) report(page, 'missing <html lang>');
   if (!has(src, /<title>[^<]{3,}<\/title>/)) report(page, 'missing <title>');
   if (!has(src, /<meta name="viewport"/)) report(page, 'missing viewport meta');

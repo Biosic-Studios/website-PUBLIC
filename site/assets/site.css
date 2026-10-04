@@ -482,6 +482,16 @@ a.frame { display: block; }
   border-left: 3px solid var(--accent); background: var(--panel); padding: 16px 20px; border-radius: 0 var(--radius) var(--radius) 0;
 }
 
+/* Fine print that folds away (trailer credits) */
+.fineprint { color: var(--dust); font-size: 0.9rem; }
+.fineprint > summary { cursor: pointer; font-weight: 700; width: max-content; max-width: 100%; }
+.fineprint > summary:hover { color: var(--bone); }
+.fineprint[open] > summary { margin-bottom: 10px; }
+.fineprint .list { font-size: 0.9rem; }
+/* A boxed aside with a bit of personality (About the goat) */
+.callout.goat { display: grid; gap: 6px; max-width: 760px; padding: 18px 22px; background: radial-gradient(80% 140% at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%), var(--panel); }
+.callout.goat p { color: var(--dust); }
+
 /* ---------- Timeline (series pages) ---------- */
 .timeline { display: grid; gap: 16px; counter-reset: step; }
 .timeline .card { grid-template-columns: auto 1fr; gap: 6px 18px; align-items: start; }

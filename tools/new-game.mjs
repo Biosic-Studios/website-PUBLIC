@@ -5,8 +5,8 @@
 //   node tools/new-game.mjs star-farm "Star Farm" "A cozy farming game on a drifting space station." --status dev --accent water
 //
 // It creates site/<slug>/index.html from tools/game-page.template.html, then adds a
-// card to the home page's "More from Biosic" grid, a link to every footer, and an
-// entry to sitemap.xml. Anything it can't know (cover art, features, links) is left as a
+// card to the home page's "More from Biosic" grid, a section to the All games page
+// (/games/), a link to every footer, and an entry to sitemap.xml. Anything it can't know (cover art, features, links) is left as a
 // {{PLACEHOLDER}} that tools/check-site.mjs flags until you fill it in.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -96,6 +96,23 @@ insertAbove(home, '<!-- games:cards:end', `<article class="game-card" data-game=
 </article>
 `);
 
+// ---- 2b. The All games page: a section with the basics
+insertAbove(path.join(SITE, 'games', 'index.html'), '<!-- games:list:end', `<section class="game-entry" id="${slug}" data-game="${slug}" aria-labelledby="${slug}-h" style="--accent: ${accent}">
+  <div class="wrap split">
+    <a class="frame" href="/${slug}/" tabindex="-1" aria-hidden="true">
+      <span class="fallback">${CAPS}</span>
+      <img src="${cover}" loading="lazy" decoding="async" alt="">
+    </a>
+    <div class="stack">
+      <div class="badges">${badge}</div>
+      <h2 id="${slug}-h">${NAME}</h2>
+      <p>${PITCH}</p>
+      <div class="btns"><a class="btn primary" href="/${slug}/">See ${NAME}</a></div>
+    </div>
+  </div>
+</section>
+`);
+
 // ---- 3. Footers (every page + the template)
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]);
@@ -112,7 +129,7 @@ fs.writeFileSync(sitemap, fs.readFileSync(sitemap, 'utf8')
 const left = [...new Set(page.match(/\{\{[^}]+\}\}/g) || [])];
 console.log(`✓ Added ${name}:
   • site/${slug}/index.html (new page)
-  • a card on the home page (More from Biosic)
+  • a card on the home page (More from Biosic) and a section on /games/
   • footer link on ${footerFiles.length} files, sitemap entry
 
 Next:

@@ -122,6 +122,26 @@ document.querySelectorAll('form[data-composer]').forEach((form) => {
   update();
 });
 
+// ---------- Visit counts (GoatCounter) ----------
+// Anonymous page counts: no cookies, no personal data (see /privacy/).
+// Set STATS_CODE to the GoatCounter site code (https://<code>.goatcounter.com).
+// Empty = off. Previews on other hosts are never counted.
+const STATS_CODE = '';
+if (STATS_CODE && location.hostname === 'biosicstudios.com') {
+  const counter = document.createElement('script');
+  counter.async = true;
+  counter.src = 'https://gc.zgo.at/count.js';
+  counter.dataset.goatcounter = `https://${STATS_CODE}.goatcounter.com/count`;
+  document.head.append(counter);
+  // Also count clicks out to itch.io (e.g. "itch/hungerhold") as events.
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href*="itch.io"]');
+    if (!link || !window.goatcounter?.count) return;
+    const slug = new URL(link.href).pathname.replace(/^\/|\/$/g, '') || 'home';
+    window.goatcounter.count({ path: `itch/${slug}`, title: link.textContent.trim().slice(0, 60), event: true });
+  });
+}
+
 // ---------- Back to top ----------
 // A little astronaut appears once you've scrolled a bit, and beams you back up.
 {

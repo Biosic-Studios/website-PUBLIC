@@ -43,6 +43,16 @@ A new **Levitating Larry** game also goes in the header's Larry dropdown (`<deta
 
 `/games/` lists every game with its details (genre, where to play, price). Keep it in step with the home cards; the checker fails if a home card has no section there.
 
+## Visit stats
+
+Anonymous visit counts come from [GoatCounter](https://www.goatcounter.com/): no cookies, no personal data, no consent banner. It's switched on by one line in `site/assets/site.js`:
+
+```js
+const STATS_CODE = 'yourcode';   // the dashboard is https://yourcode.goatcounter.com
+```
+
+Empty means off, and only biosicstudios.com is counted (local previews never are). Besides page views it shows where visitors came from (referrers and `utm_` campaign links) and counts clicks out to itch.io as events (`itch/hungerhold`, …). `/privacy/` describes all of this; keep it in step.
+
 ## Brand
 
 - **Logo:** `site/assets/brand/`. The site uses the `.webp` files; the `.png` files are the press-kit downloads.

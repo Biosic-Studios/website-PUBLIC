@@ -37,6 +37,9 @@
   for the press-kit download.
 - Screenshots and headers use only real captures from the game.
 - Keep Hungerhold family-friendly: the 420 games stay off its page.
+- Visit counts: GoatCounter, switched on by `STATS_CODE` in `site/assets/site.js`
+  (no cookies, no personal data; also counts clicks to itch.io). If what we
+  count ever changes, update `/privacy/` in the same PR.
 - Contact is `partners@biosicstudios.com` via `mailto:` links with a
   subject. `/contact/?topic=<partner|business|ai|press|playtest|art>` preselects a topic
   (`playtest` is now "Hungerhold feedback"; the key stays so old links work).

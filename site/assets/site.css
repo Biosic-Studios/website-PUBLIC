@@ -431,6 +431,7 @@ a.frame { display: block; }
   border: 1px solid var(--line); border-radius: var(--radius);
   padding: 24px; display: grid; gap: 10px; align-content: start;
 }
+.card h2 { font-size: 1.35rem; letter-spacing: 0.02em; }
 .game-card {
   background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
   overflow: hidden; display: grid; grid-template-rows: auto 1fr;

@@ -36,8 +36,8 @@ A new **Levitating Larry** game also goes in the header's Larry dropdown (`<deta
 
 ## Home page
 
-1. **Flagship hero:** Hungerhold, the current version (`v2.2.1 · out now`) and what's next (`v3.0 · in the works`). Update the badges when a version ships.
-2. **New in / Coming in** (`#new`): the latest Hungerhold update and the next one.
+1. **Flagship hero:** Hungerhold and the current version badge (`v3.0 · out now`). Update it, and the page meta, when a version ships.
+2. **What's new** (`#new`): the latest Hungerhold update, linking to the full notes on `/hungerhold/#new`.
 3. **More from Biosic** (`#games`): one card per game.
 4. **Studio trailer** (`#trailer`) and **Work with us** (`#contact`).
 
@@ -51,7 +51,7 @@ A new **Levitating Larry** game also goes in the header's Larry dropdown (`<deta
 - **Fonts:** Pixelify Sans for headings and buttons, Atkinson Hyperlegible Next for everything else.
 - **Levitating Larry:** `site/levitating-larry/img/larry.png` is a tiny 22×29 sprite. Show it with the `.sprite` class (inside a `.frame.space-frame.warm`) so it scales up pixel-sharp.
 - **Studio trailer:** `site/assets/video/` (MP4 + poster). It plays on the home page (`#trailer`, click to load) and is downloadable from the press kit.
-- **Hungerhold:** the lead line is "Every life teaches the next.", then "Hand-me-down survival: one short life, one family that remembers." Say "make" and "know-how", not "craft"; no Maslow, and no "a world that reacts" or "breaks" as a headline. Screenshots are in `site/hungerhold/img/` (full size + `-640` thumbnails); `hero-*.webp` are the same shots cropped without the interface, for the big headers. The playable build lives on itch.io, not here.
+- **Hungerhold:** the lead line is "Every life teaches the next."; the genre is a kinlike (hand-me-down survival). Say "make", "know-how" and "life", never "craft", "recipe" or "a run", and no em or en dashes. Screenshots are real v3.0 captures in `site/hungerhold/img/`: full size (lossless) plus `-640` and `-960` (world shots are scaled from their 320×180 pixel grid, so they stay crisp). `og.jpg` is the share card. The v3.0 trailer and its poster are in `site/hungerhold/media/`; its credits sit under the video. The playable build lives on itch.io, not here.
 - **Levitating Larry Encore:** `site/levitating-larry/encore/`, a coming-soon page. `encore-og.png` is its share card.
 
 ## Contact

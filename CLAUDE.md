@@ -20,9 +20,13 @@
   `style="--accent: var(--ember)"`, Larry `class="theme-sun"`).
 - Header and footer are duplicated in every page and in
   `tools/game-page.template.html`; the checker fails if they drift.
+- The header's "Levitating Larry" dropdown is a `<details class="menu">`
+  (Levitating Larry, Levitating Larry Encore). It works without JS.
 - New game: `node tools/new-game.mjs …` (see README). It relies on the
-  `showcase:slides:end`, `showcase:tabs:end`, `games:cards:end` and
-  `footer:games:end` comment markers; keep them.
+  `games:cards:end` and `footer:games:end` comment markers; keep them.
+- Hungerhold copy leads with "Every life teaches the next." The checker
+  fails on retired lines (see `RETIRED` in `tools/check-site.mjs`). No
+  Hungerhold trailer is on the site until there's one without them.
 - Contact is `partners@biosicstudios.com` via `mailto:` links with a
   subject. `/contact/?topic=<partner|business|ai|press|playtest|art>` preselects a topic
   (`playtest` is now "Hungerhold feedback"; the key stays so old links work).

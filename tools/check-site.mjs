@@ -2,8 +2,8 @@
 // Checks the static site in site/ before it ships. No dependencies.
 //   node tools/check-site.mjs
 // Fails (exit 1) on: leftover {{PLACEHOLDERS}}, missing page basics (title, description, favicon, ...),
-// invalid JSON-LD/speculation rules, headers/footers out of sync, a game missing from the
-// home slider/tabs/grid,
+// invalid JSON-LD/speculation rules, headers/footers out of sync, a game page with no card
+// on the home page, retired marketing lines,
 // internal links or images that point at nothing, #anchors that don't exist,
 // and pages missing from (or dead entries in) sitemap.xml.
 import fs from 'node:fs';
@@ -11,6 +11,8 @@ import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'site');
 const ORIGIN = 'https://biosicstudios.com';
+// Lines the studio no longer uses in marketing (lead with "Every life teaches the next.").
+const RETIRED = [/Starve\.?\s+Learn\.?\s+Reign/i, /empty stomach to a crown/i];
 const isNoindex = (src) => /<meta name="robots" content="noindex/.test(src);
 
 const problems = [];
@@ -45,6 +47,7 @@ for (const page of pages) {
   // Page basics
   const leftover = src.match(/\{\{[^}]*\}\}/);
   if (leftover) report(page, `unfilled template placeholder: ${leftover[0]}`);
+  for (const re of RETIRED) if (re.test(src)) report(page, `retired marketing line: ${src.match(re)[0]}`);
   if (!has(src, /<html[^>]*\slang="/)) report(page, 'missing <html lang>');
   if (!has(src, /<title>[^<]{3,}<\/title>/)) report(page, 'missing <title>');
   if (!has(src, /<meta name="viewport"/)) report(page, 'missing viewport meta');
@@ -80,21 +83,28 @@ for (const page of pages) {
 const block = (src, re) => (src.match(re) || [''])[0];
 const headerOf = (src) => block(src, /<header class="site-header">[\s\S]*?<\/header>/).replace(/ aria-current="page"/g, '');
 const footerOf = (src) => block(src, /<footer class="site-footer">[\s\S]*?<\/footer>/);
-for (const page of pages) {
-  if (headerOf(html[page]) !== headerOf(html['index.html'])) report(page, 'site header differs from the home page (keep headers in sync)');
-  if (footerOf(html[page]) !== footerOf(html['index.html'])) report(page, 'site footer differs from the home page (keep footers in sync)');
+const TEMPLATE = path.resolve(ROOT, '..', 'tools', 'game-page.template.html');
+const shells = { ...html, '../tools/game-page.template.html': fs.readFileSync(TEMPLATE, 'utf8') };
+for (const [page, src] of Object.entries(shells)) {
+  if (headerOf(src) !== headerOf(html['index.html'])) report(page, 'site header differs from the home page (keep headers in sync)');
+  if (footerOf(src) !== footerOf(html['index.html'])) report(page, 'site footer differs from the home page (keep footers in sync)');
 }
 
-// Home: every game has a slide, a slider tab and a grid card.
+// Home: one card per game, and every game page on the site is linked from a card
+// (or from the flagship hero at the top).
 const home = html['index.html'];
-const setOf = (re) => new Set([...home.matchAll(re)].map((m) => m[1]));
-const slides = setOf(/<article class="slide" id="slide-([^"]+)" data-game="\1"/g);
-const tabs = setOf(/<a class="sc-tab" href="#slide-([^"]+)"/g);
-const cards = setOf(/<article class="game-card[^"]*" data-game="([^"]+)"/g);
-for (const g of new Set([...slides, ...tabs, ...cards])) {
-  if (!slides.has(g)) report('index.html', `game "${g}" has no slider slide (id="slide-${g}" data-game="${g}")`);
-  if (!tabs.has(g)) report('index.html', `game "${g}" has no slider tab (href="#slide-${g}")`);
-  if (!cards.has(g)) report('index.html', `game "${g}" has no card in the games grid`);
+const cardBlocks = [...home.matchAll(/<article class="game-card[^"]*" data-game="([^"]+)"[\s\S]*?<\/article>/g)];
+const cards = new Set();
+for (const [, game] of cardBlocks) {
+  if (cards.has(game)) report('index.html', `two game cards for "${game}"`);
+  cards.add(game);
+}
+const flagship = block(home, /<section class="flagship"[\s\S]*?<\/section>/);
+const cardLinks = new Set([...cardBlocks.map(([b]) => b), flagship].flatMap((b) => [...b.matchAll(/href="(\/[^"#?]*)"/g)].map((m) => m[1])));
+for (const page of pages) {
+  if (!/"@type":"VideoGame"/.test(html[page])) continue;
+  const url = '/' + page.replace(/index\.html$/, '');
+  if (!cardLinks.has(url)) report('index.html', `game page ${url} has no card in the home games grid`);
 }
 
 // Sitemap: every public page listed, every entry real.
@@ -118,4 +128,4 @@ if (unique.length) {
   console.error(`✗ ${unique.length} problem(s):\n  ` + unique.join('\n  '));
   process.exit(1);
 }
-console.log(`✓ site/ looks good: ${pages.length} pages checked, ${slides.size} slider games, ${listed.size} sitemap entries.`);
+console.log(`✓ site/ looks good: ${pages.length} pages checked, ${cards.size} game cards on home, ${listed.size} sitemap entries.`);

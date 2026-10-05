@@ -52,7 +52,7 @@ A new **Levitating Larry** game also goes in the header's Larry dropdown (`<deta
 - **Levitating Larry:** `site/levitating-larry/img/larry.png` is a tiny 22×29 sprite. Show it with the `.sprite` class (inside a `.frame.space-frame.warm`) so it scales up pixel-sharp.
 - **Studio trailer:** `site/assets/video/` (MP4 + poster). It plays on the home page (`#trailer`, click to load) and is downloadable from the press kit.
 - **Hungerhold:** the lead line is "Every life teaches the next."; the genre is a kinlike (hand-me-down survival). Say "make", "know-how" and "life", never "craft", "recipe" or "a run", and no em or en dashes. Screenshots are real v3.0 captures in `site/hungerhold/img/`: full size (lossless) plus `-640` and `-960` (world shots are scaled from their 320×180 pixel grid, so they stay crisp). `og.jpg` is the share card. The v3.0 trailer plays from YouTube on `/hungerhold/#trailer` (our own poster, click to load); the MP4 and poster in `site/hungerhold/media/` are for the press kit. Its credits sit under the video. The playable build lives on itch.io, not here.
-- **Levitating Larry Encore:** `site/levitating-larry/encore/`, a coming-soon page. `encore-og.png` is its share card.
+- **Levitating Larry Encore:** `site/levitating-larry/encore/`. Out now, free on itch.io (https://biosicstudios.itch.io/levitating-larry-encore); the trailer plays from YouTube (`x3s6SclyOUY`) with our own poster (`img/encore-trailer-poster*.webp`). `encore-og.png` is its share card.
 
 ## Contact
 

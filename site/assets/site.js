@@ -126,7 +126,7 @@ document.querySelectorAll('form[data-composer]').forEach((form) => {
 // Anonymous page counts: no cookies, no personal data (see /privacy/).
 // Set STATS_CODE to the GoatCounter site code (https://<code>.goatcounter.com).
 // Empty = off. Previews on other hosts are never counted.
-const STATS_CODE = '';
+const STATS_CODE = 'biosicstudios';
 if (STATS_CODE && location.hostname === 'biosicstudios.com') {
   const counter = document.createElement('script');
   counter.async = true;
